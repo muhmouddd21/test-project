@@ -1,0 +1,5 @@
+# Ignore generated bundle
+/dist/bundle.js
+/node_modules/
+Screenshot from 2025-04-19 16-35-30.png
+Screenshot from 2025-04-19 16-36-21.png
