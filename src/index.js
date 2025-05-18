@@ -120,7 +120,7 @@ const firebaseConfig = {
         for(let i =0; i<noOfProducts; i++){
            
             let card = `
-            <div class="card">
+            <div class="card-m">
                 <div class="image">
                     <img id="previewImage-${i}" />
 
@@ -195,7 +195,7 @@ const firebaseConfig = {
 
 //    when i hover over the thumbnails it handles it
    function attachThumbnailHoverEvents(){
-            const cards = document.querySelectorAll(".card");
+            const cards = document.querySelectorAll(".card-m");
         
             cards.forEach((card, i) => {
             const targetImage = document.getElementById(`previewImage-${i}`);
