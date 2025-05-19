@@ -111,6 +111,69 @@
 
         </div>
     </div>
+
+
+        <div class="form-container-m">
+            <h1>Add New Product</h1>
+            <form id="productForm">
+                <div class="form-group-m">
+                    <label for="title">Product Title:</label>
+                    <input type="text" id="title" name="title" value="Waterproof Multi-Pocket" required>
+                </div>
+
+                <div class="form-group-m">
+                    <label>Discount & Price:</label>
+                    <div class="field-group-m">
+                        <div class="form-group-m">
+                            <label for="discount">Discount (%):</label>
+                            <input type="number" id="discount" name="discount" value="60" min="0" max="100">
+                        </div>
+                        <div class="form-group-m">
+                            <label for="price">Price:</label>
+                            <input type="number" id="price" name="price" value="500" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group-m">
+                    <label>Sizes:</label>
+                    <div class="field-group-m" id="sizesContainer">
+                        <div class="size-item-m">
+                            <input type="text" name="sizeValue[]" placeholder="Size value (e.g., M)" value="M">
+                            <button type="button" class="remove-btn-m">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="add-btn-m" id="addSizeBtn">Add Size</button>
+                </div>
+
+                <div class="form-group-m">
+                    <label>Image URLs:</label>
+                    <div class="field-group-m" id="urlsContainer">
+                        <div class="url-item-m">
+                            <input type="text" name="urlKey[]" placeholder="URL key (e.g., B)" value="0">
+                            <input type="text" name="urlValue[]" placeholder="Image URL" value="https://res.cloudinary.com/dengwkum6/image/upload/v1747405561/akbwkfmgkfwzdin3p3ba.jpg">
+                            <button type="button" class="remove-btn-m">Remove</button>
+                        </div>
+                        <div class="url-item-m">
+                            <input type="text" name="urlKey[]" placeholder="URL key (e.g., 1)" value="1">
+                            <input type="text" name="urlValue[]" placeholder="Image URL" value="https://res.cloudinary.com/dengwkum6/image/upload/v1747405493/zk0aewsshplcgecdsdfl.jpg">
+                            <button type="button" class="remove-btn-m">Remove</button>
+                        </div>
+                        <div class="url-item-m">
+                            <input type="text" name="urlKey[]" placeholder="URL key (e.g., 2)" value="2">
+                            <input type="text" name="urlValue[]" placeholder="Image URL" value="https://res.cloudinary.com/dengwkum6/image/upload/v1747405493/zk0aewsshplcgecdsdfl.jpg">
+                            <button type="button" class="remove-btn-m">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="add-btn-m" id="addUrlBtn">Add URL</button>
+                </div>
+
+                <button type="submit"  id="submit-btn-m" class="submit-btn-m">Submit Product</button>
+            </form>
+        </div>
+
+
+
      <!-- Scroll to top button -->
      <span class="up"><i class="fa-solid fa-arrow-up"></i></span>
      <!--End Products -->

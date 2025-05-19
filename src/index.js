@@ -1,6 +1,6 @@
  import {initializeApp} from 'firebase/app'
  import{
-    getFirestore,collection,getDocs
+    getFirestore,collection,getDocs,addDoc
  } from 'firebase/firestore'
 const firebaseConfig = {
 
@@ -274,7 +274,7 @@ function addToFav(id, e) {
     console.log(fav);
 }
 
-
+    let cartChosen ={};
 
    function popUpMenuForShopping(idOfElement) {
     document.querySelector('.pop-up').classList.add('open');
@@ -321,7 +321,7 @@ function addToFav(id, e) {
                 </div>
                 
             
-                <button class="add-to-cart">ADD TO CART</button>
+                <button class="add-to-cart" id="add-to-cart-pop">ADD TO CART</button>
                
         
         `;
@@ -348,7 +348,13 @@ function addToFav(id, e) {
             colorsContainer.innerHTML += imageToappend;
             document.getElementById(`previewImage-${id}-${j}`).src =thumbnailsCropped;
         }
-
+        let addingBotton = document.getElementById("add-to-cart-pop");
+        addingBotton.addEventListener("click",()=>{
+            closePopup();
+            cartChosen= shoes[id];
+            console.log(cartChosen);
+    
+        })
 
 
 
@@ -361,6 +367,115 @@ function addToFav(id, e) {
     document.querySelector('.pop-up').classList.remove('open');
     document.querySelector('.pop-up-overlay').classList.remove('open');
    }
+
+
+
+   document.addEventListener('DOMContentLoaded', function() {
+    // This will now work because the DOM is fully loaded
+    let test = document.getElementsByClassName("form-container-m");
+    console.log(test);
+    
+    // Rest of your existing DOMContentLoaded code...
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+
+
+    // Add new size field
+    document.getElementById('addSizeBtn').addEventListener('click', function() {
+        const container = document.getElementById('sizesContainer');
+        const newSizeItem = document.createElement('div');
+        newSizeItem.className = 'size-item-m';
+        newSizeItem.innerHTML = `
+            <input type="text" name="sizeValue[]" placeholder="Size value (e.g., M)">
+            <button type="button" class="remove-btn-m">Remove</button>
+        `;
+        container.appendChild(newSizeItem);
+        
+        // Add event listener to the new remove button
+        newSizeItem.querySelector('.remove-btn-m').addEventListener('click', function() {
+            container.removeChild(newSizeItem);
+        });
+    });
+
+
+    // Add new URL field
+    document.getElementById('addUrlBtn').addEventListener('click', function() {
+        const container = document.getElementById('urlsContainer');
+        const newUrlItem = document.createElement('div');
+        newUrlItem.className = 'url-item-m';
+        newUrlItem.innerHTML = `
+            <input type="text" name="urlKey[]" placeholder="URL key (e.g., B)">
+            <input type="text" name="urlValue[]" placeholder="Image URL">
+            <button type="button" class="remove-btn-m">Remove</button>
+        `;
+        container.appendChild(newUrlItem);
+        
+        // Add event listener to the new remove button
+        newUrlItem.querySelector('.remove-btn-m').addEventListener('click', function() {
+            container.removeChild(newUrlItem);
+        });
+    });
+
+    // Add event listeners to existing remove buttons
+    document.querySelectorAll('#sizesContainer .remove-btn-m').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.size-item-m').remove();
+        });
+    });
+
+    document.querySelectorAll('#urlsContainer .remove-btn-m').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.url-item-m').remove();
+        });
+    });
+
+    let submitBtn = document.getElementById("submit-btn-m");
+        if (submitBtn) {
+            submitBtn.addEventListener("click", function() {
+
+            });
+        }
+})
+
+document.getElementById('productForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+ 
+    const formData = {
+        title: document.getElementById('title').value,
+        discount: document.getElementById('discount').value,
+        price: document.getElementById('price').value,
+        sizes: [],
+        urls: []
+    };
+
+    // Collect sizes
+    document.querySelectorAll('#sizesContainer .size-item-m').forEach(item => {
+        const value = item.querySelector('input[name="sizeValue[]"]').value;
+        if (value) {
+            formData.sizes.push(value) ;
+        }
+    });
+
+    // Collect URLs
+    document.querySelectorAll('#urlsContainer .url-item-m').forEach(item => {
+        const key = item.querySelector('input[name="urlKey[]"]').value;
+        const value = item.querySelector('input[name="urlValue[]"]').value;
+        if (key && value) {
+            formData.urls[key] = value;
+        }
+    });
+
+    addDoc(colRef,formData)
+    .then(()=>{
+        productForm.reset();
+    })
+  
+
+    
+
+});
    
 
 
