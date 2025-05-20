@@ -1,4 +1,5 @@
 import {db,collection,getDocs,addDoc} from './config.js'
+import {initScrollToTop} from './scrollToup.js'
 
    const colRef = collection(db,"shoes");
 
@@ -227,11 +228,6 @@ import {db,collection,getDocs,addDoc} from './config.js'
    // ---------------------------------------------------------------------------------------------
 
 
-
-
-
-
-   let cart = new Set();
    let fav =new Set();
   
    function addToCart(id,e) {
@@ -254,7 +250,6 @@ function addToFav(id, e) {
         icon.classList.remove("pressed-icon");
     }
 
-    console.log(fav);
 }
 
     let cartChosen ={};
@@ -273,8 +268,6 @@ function addToFav(id, e) {
         let salePrice =calculateDiscount(shoes[id].price,shoes[id].discount);  
         let originalPrice =shoes[id].price;
          let saving = originalPrice - salePrice ;
-
-
 
 
 
@@ -457,8 +450,8 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
   
 });
 
-
- 
+// button to scroll to top
+ initScrollToTop();
 
 
 
