@@ -5,15 +5,16 @@
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyARS1Jzh_fjTXY6tUZPwYUbsjmsD-R2P7g",
-    authDomain: "mahmoud-testing.firebaseapp.com",
-    projectId: "mahmoud-testing",
-    storageBucket: "mahmoud-testing.firebasestorage.app",
-    messagingSenderId: "784858890781",
-    appId: "1:784858890781:web:bfde83d2a38b24f48b3cf4",
-    measurementId: "G-W6HNRR9RZ5"
-  
-  };
+  apiKey: "AIzaSyBKwseko7JItznt37s6Ed8MX46qD0Nu8Sk",
+  authDomain: "jsproj-group.firebaseapp.com",
+  projectId: "jsproj-group",
+  storageBucket: "jsproj-group.firebasestorage.app",
+  messagingSenderId: "857452922932",
+  appId: "1:857452922932:web:17a57941d2c2ede533e261",
+  measurementId: "G-FSS7ZWQ06C"
+
+};
+
 
   initializeApp(firebaseConfig)
   const db = getFirestore();
