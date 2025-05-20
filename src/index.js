@@ -1,22 +1,5 @@
- import {initializeApp} from 'firebase/app'
- import{
-    getFirestore,collection,getDocs,addDoc
- } from 'firebase/firestore'
-const firebaseConfig = {
+import {db,collection,getDocs,addDoc} from './config.js'
 
-    apiKey: "AIzaSyARS1Jzh_fjTXY6tUZPwYUbsjmsD-R2P7g",
-    authDomain: "mahmoud-testing.firebaseapp.com",
-    projectId: "mahmoud-testing",
-    storageBucket: "mahmoud-testing.firebasestorage.app",
-    messagingSenderId: "784858890781",
-    appId: "1:784858890781:web:bfde83d2a38b24f48b3cf4",
-    measurementId: "G-W6HNRR9RZ5"
-  
-  };
-
-   initializeApp(firebaseConfig)
-
-   const db = getFirestore();
    const colRef = collection(db,"shoes");
 
 //    function for editing the size of the photo comming from firebase before inserting in ui to be the same size
@@ -472,14 +455,7 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
         productForm.reset();
     })
   
-
-    
-
 });
-   
-
-
-
 
 
  
